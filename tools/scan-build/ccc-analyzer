@@ -352,7 +352,8 @@ my %CompilerLinkerOptionMap = (
   '-target' => 1,
   '-v' => 0,
   '-mmacosx-version-min' => 0, # This is really a 1 argument, but always has '='
-  '-miphoneos-version-min' => 0 # This is really a 1 argument, but always has '='
+  '-miphoneos-version-min' => 0, # This is really a 1 argument, but always has '='
+  '--sysroot' => 0
 );
 
 my %IgnoredOptionMap = (
@@ -392,7 +393,8 @@ my %LangMap = (
 );
 
 my %UniqueOptions = (
-  '-isysroot' => 0  
+  '-isysroot' => 0,
+  '--sysroot' => 0
 );
 
 ##----------------------------------------------------------------------------##

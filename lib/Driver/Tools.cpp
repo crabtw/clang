@@ -6378,9 +6378,12 @@ static StringRef getLinuxDynamicLinker(const ArgList &Args,
     else
       return "/lib/ld-linux.so.3";
   } else if (ToolChain.getArch() == llvm::Triple::mips ||
-             ToolChain.getArch() == llvm::Triple::mipsel)
-    return "/lib/ld.so.1";
-  else if (ToolChain.getArch() == llvm::Triple::mips64 ||
+             ToolChain.getArch() == llvm::Triple::mipsel) {
+    if (ToolChain.getTriple().getEnvironment() == llvm::Triple::UClibc)
+      return "/lib/ld-uClibc.so.0";
+    else
+      return "/lib/ld.so.1";
+  } else if (ToolChain.getArch() == llvm::Triple::mips64 ||
            ToolChain.getArch() == llvm::Triple::mips64el) {
     if (hasMipsN32ABIArg(Args))
       return "/lib32/ld.so.1";
